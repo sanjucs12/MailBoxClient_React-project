@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 const InboxNavbar = () => {
   const navigate = useNavigate();
   const Dispatch = useDispatch();
+  let usermail = localStorage.getItem("mailid").replace(/@gmail.com/g, "");
   const logoutHandler = () => {
     localStorage.clear();
     Dispatch(AuthsliceAction.Login());
@@ -23,6 +24,7 @@ const InboxNavbar = () => {
               className="thum-img"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1200px-Gmail_icon_%282020%29.svg.png"
             ></img>
+
             <img
               className="thum-img2"
               alt="mailname"
@@ -32,6 +34,12 @@ const InboxNavbar = () => {
           {/* <Nav>
             <Nav.Link>Home</Nav.Link>
           </Nav> */}
+          <div className="mailname">
+            <h4>
+              Name: <span>{usermail}</span>
+            </h4>
+          </div>
+
           <Form className="d-flex pl-5" style={{ width: "600px" }}>
             <Form.Control
               type="text"

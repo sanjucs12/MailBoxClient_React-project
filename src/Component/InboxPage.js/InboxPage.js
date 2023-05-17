@@ -27,17 +27,17 @@ const InboxPage = () => {
 
   // calling the backend api every 2 seconds to update inbox
 
-  // useEffect(() => {
-  //   const intervelid = setInterval(() => {
-  //     console.log("setintervelid", intervelid);
-  //     Disptach(getmailHandler());
-  //   }, 2000);
+  useEffect(() => {
+    const intervelid = setInterval(() => {
+      console.log("setintervelid", intervelid);
+      Disptach(getmailHandler());
+    }, 2000);
 
-  //   return () => {
-  //     console.log("clearintervelid", intervelid);
-  //     clearInterval(intervelid);
-  //   };
-  // });
+    return () => {
+      console.log("clearintervelid", intervelid);
+      clearInterval(intervelid);
+    };
+  });
 
   const sendmailcartHandler = () => {
     Disptach(getmailHandler());

@@ -1,14 +1,26 @@
-import AuthForm from "./Component/AuthForm/AuthForm";
-import TextEditing from "./Component/TextEditing/TextEditing";
-import InboxPage from "./Component/InboxPage.js/InboxPage";
+// import AuthForm from "./Component/AuthForm/AuthForm";
+// import TextEditing from "./Component/TextEditing/TextEditing";
+// import InboxPage from "./Component/InboxPage.js/InboxPage";
 import { Route, Routes, Navigate } from "react-router-dom";
-import SentMessage from "./Component/InboxPage.js/Sentmessage/SentMessage";
-import { useEffect } from "react";
-import InboxList from "./Component/InboxPage.js/InboxList";
+// import SentMessage from "./Component/InboxPage.js/Sentmessage/SentMessage";
+import React, { useEffect, Suspense } from "react";
+// import InboxList from "./Component/InboxPage.js/InboxList";
 import { useSelector, useDispatch } from "react-redux";
 import { UpdateMySentItem } from "./Store/Mail-thunk";
 import { useNavigate } from "react-router-dom";
-
+const InboxPage = React.lazy(() =>
+  import("./Component/InboxPage.js/InboxPage")
+);
+const TextEditing = React.lazy(() =>
+  import("./Component/TextEditing/TextEditing")
+);
+const AuthForm = React.lazy(() => import("./Component/AuthForm/AuthForm"));
+const SentMessage = React.lazy(() =>
+  import("./Component/InboxPage.js/Sentmessage/SentMessage")
+);
+const InboxList = React.lazy(() =>
+  import("./Component/InboxPage.js/InboxList")
+);
 function App() {
   let loginlocalstore = localStorage.getItem("islogin") === "true";
   // console.log(loginlocalstore);
@@ -33,21 +45,23 @@ function App() {
   // console.log("app", sentItem);
   return (
     <div>
-      <Routes>
-        <Route path="/login" element={<AuthForm />}></Route>
-        {loginlocalstore && (
-          <Route path="/main/*" element={<InboxPage />}>
-            <Route path="inboxlist" element={<InboxList />} />
-            <Route path="text-edit" element={<TextEditing />} />
-            <Route path="sentmessage" element={<SentMessage />} />
-          </Route>
-        )}
-        {!loginlocalstore && (
-          <Route element={<Navigate replace to="login" />} />
-        )}
+      <Suspense fallback={<p className="loading">Loading .....</p>}>
+        <Routes>
+          <Route path="/login" element={<AuthForm />}></Route>
+          {loginlocalstore && (
+            <Route path="/main/*" element={<InboxPage />}>
+              <Route path="inboxlist" element={<InboxList />} />
+              <Route path="text-edit" element={<TextEditing />} />
+              <Route path="sentmessage" element={<SentMessage />} />
+            </Route>
+          )}
+          {!loginlocalstore && (
+            <Route element={<Navigate replace to="login" />} />
+          )}
 
-        {/* <TextEditing></TextEditing> */}
-      </Routes>
+          {/* <TextEditing></TextEditing> */}
+        </Routes>
+      </Suspense>
     </div>
   );
 }

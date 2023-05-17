@@ -159,7 +159,7 @@ export const UpdateMySentItem = (sentItem) => {
 
     const UpdatedingmySendingItem = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}/sentItem/.json`,
+        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com/${emailId}/sentItem/.json`,
         {
           method: "PUT",
           body: JSON.stringify(sentItem),

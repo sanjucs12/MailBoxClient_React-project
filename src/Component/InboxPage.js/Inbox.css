@@ -42,3 +42,12 @@
   ); */
   background-color: rgb(235, 216, 253);
 }
+.mailname {
+  position: relative;
+  left: -30%;
+  width: 40%;
+}
+.mailname span {
+  font-size: large;
+  color: blueviolet;
+}
