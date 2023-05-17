@@ -7,6 +7,7 @@ import { UpdateList } from "../../Store/Mail-thunk";
 import { useSelector, useDispatch } from "react-redux";
 const InboxList = () => {
   const Items = useSelector((state) => state.mail.items);
+  console.log(Items);
 
   return (
     <>
@@ -18,6 +19,7 @@ const InboxList = () => {
             subject={item.subject}
             text={item.text}
             id={item.id}
+            From={item.From}
             readreceipt={item.readreceipt}
           ></InboxListItem>
         ))}

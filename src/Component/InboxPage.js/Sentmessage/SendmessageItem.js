@@ -1,13 +1,14 @@
 import React from "react";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-
+import { MailSliceAction } from "../../../Store/MailSlice";
 // import { UpdateList } from "../../Store/Mail-thunk";
 import Button from "react-bootstrap/Button";
 
 // import { DeleteMail } from "../../Store/Mail-thunk";
 import { Link } from "react-router-dom";
-// import { MailSliceAction } from "../../Store/MailSlice";
+
+import { MymailSliceAction } from "../../../Store/MymailSlice";
 
 const SentMessageListItem = (props) => {
   const Dispatch = useDispatch();
@@ -19,9 +20,10 @@ const SentMessageListItem = (props) => {
     Readreceipt = "readreceipt";
   }
   const ListItemHandler = () => {
-    console.log("sendmeeage page");
+    // console.log("sendmeeage page", props);
+    Dispatch(MymailSliceAction.addMessageViewinfo(props));
     // if (props.readreceipt) {
-    //   Dispatch(MailSliceAction.addMessageViewinfo(props));
+    // Dispatch(MailSliceAction.addMessageViewinfo(props));
     //   return;
     // }
     // Dispatch(UpdateList(props));
@@ -46,8 +48,7 @@ const SentMessageListItem = (props) => {
           <Row>
             <Col className="pb-3">
               <div className="readreceiptbox" onClick={ListItemHandler}>
-                <div className={`${Readreceipt}`}>.</div>
-                <Link to="mailview">{props.email}</Link>
+                <Link to="sentmailview">{props.email}</Link>
               </div>
             </Col>
 

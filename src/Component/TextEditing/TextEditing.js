@@ -6,6 +6,7 @@ import { Form } from "react-bootstrap";
 import "./TextEditing.css";
 import { useDispatch } from "react-redux";
 import { sendMailHandler } from "../../Store/Mail-thunk";
+import { MymailSliceAction } from "../../Store/MymailSlice";
 
 // import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 
@@ -16,13 +17,16 @@ const TextEditing = () => {
   const Enteredtext = React.createRef(null);
   const FormsubmitHandler = (event) => {
     event.preventDefault();
+
     const mailData = {
       email: Enteredemail.current.value,
       subject: Enteredsubject.current.value,
       text: Enteredtext.current.value,
+      From: localStorage.getItem("mailid"),
       readreceipt: false,
     };
     Disptach(sendMailHandler(mailData));
+    Disptach(MymailSliceAction.AddSenditemList(mailData));
     console.log(mailData, "TextEditing-FormsubmitHandler");
   };
   return (

@@ -12,6 +12,7 @@ import { UpdateList } from "../../Store/Mail-thunk";
 import MessageView from "./MessageView";
 import { Link, Route, Routes } from "react-router-dom";
 import SentMessage from "./Sentmessage/SentMessage";
+import SentMessageView from "./Sentmessage/sentMessageView";
 
 const InboxPage = () => {
   const Items = useSelector((state) => state.mail.items);
@@ -73,6 +74,12 @@ const InboxPage = () => {
             </ListGroup> */}
             <Routes>
               <Route path="/inboxlist/mailview" element={<MessageView />} />
+            </Routes>
+            <Routes>
+              <Route
+                path="/sentmessage/sentmailview"
+                element={<SentMessageView />}
+              />
             </Routes>
             {/* <InboxList></InboxList> */}
             <Outlet></Outlet>

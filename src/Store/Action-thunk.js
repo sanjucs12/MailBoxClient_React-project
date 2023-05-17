@@ -1,5 +1,11 @@
 import { AuthsliceAction } from "./Auth";
 
+const Navigate = () => {
+  // let ;
+  console.log("navi");
+
+  // ;
+};
 const loginURL =
   "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
 const signupUrl =
@@ -60,6 +66,7 @@ export const Sendlogin = (obj) => {
       localStorage.setItem("id", data.idToken);
       localStorage.setItem("islogin", "true");
       localStorage.setItem("mailid", obj.email);
+
       //  console.log(id);
       dispatch(AuthsliceAction.Login(id));
     } catch (error) {
