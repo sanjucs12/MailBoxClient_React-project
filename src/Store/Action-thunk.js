@@ -56,6 +56,7 @@ export const Sendlogin = (obj) => {
     try {
       const data = await sendingloginAuth();
       const id = await data.idToken;
+
       localStorage.setItem("id", data.idToken);
       localStorage.setItem("islogin", "true");
       localStorage.setItem("mailid", obj.email);

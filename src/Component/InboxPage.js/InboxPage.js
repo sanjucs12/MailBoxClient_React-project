@@ -1,7 +1,7 @@
 import React from "react";
 import "./Inbox.css";
 import { Container, Form, Button, Row, Col, ListGroup } from "react-bootstrap";
-
+import { Outlet } from "react-router-dom";
 import InboxList from "./InboxList";
 import InboxNavbar from "./InboxNavbar";
 import TextEditing from "../TextEditing/TextEditing";
@@ -10,10 +10,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateList } from "../../Store/Mail-thunk";
 import MessageView from "./MessageView";
-let isinitialState = true;
+import { Link, Route, Routes } from "react-router-dom";
+
 const InboxPage = () => {
   const Items = useSelector((state) => state.mail.items);
   const count = useSelector((state) => state.mail.count);
+  const unread = useSelector((state) => state.mail.unread);
   const Disptach = useDispatch();
 
   console.log("beforeupdate", Items);
@@ -22,6 +24,11 @@ const InboxPage = () => {
     Disptach(getmailHandler());
   }, []);
 
+  useEffect(() => {
+    if (count > 0) {
+      Disptach(getmailHandler());
+    }
+  }, [count]);
   // useEffect(() => {
   //   console.log("UpdateList", Items);
 
@@ -35,14 +42,21 @@ const InboxPage = () => {
         <Row style={{ height: "650px" }}>
           <Col xs={2} className=" bg-info" variant="primary">
             <ListGroup className="p-2" as="ul">
-              <ListGroup.Item className="m-1 bg-" action>
-                Compose
-              </ListGroup.Item>
-              <ListGroup.Item className="m-1 bg-" action>
-                inbox
-              </ListGroup.Item>
+              <Link to="text-edit">
+                <ListGroup.Item className="m-1 bg-" action>
+                  Compose
+                </ListGroup.Item>
+              </Link>
+              <Link to="inboxlist">
+                <ListGroup.Item className="m-1 bg-" action>
+                  <div className="indbox-cont">
+                    <p>inbox</p>
+                    <h5>{unread}</h5>
+                  </div>
+                </ListGroup.Item>
+              </Link>
               <ListGroup.Item className="m-1" action>
-                sendMail
+                <Link to="#">sendMail</Link>
               </ListGroup.Item>
               <ListGroup.Item className="m-1" action>
                 DraftBox
@@ -54,8 +68,11 @@ const InboxPage = () => {
             {/* <ListGroup className="flex">
               <ListGroupItem> sone text</ListGroupItem>
             </ListGroup> */}
-
-            <InboxList></InboxList>
+            <Routes>
+              <Route path="/inboxlist/mailview" element={<MessageView />} />
+            </Routes>
+            {/* <InboxList></InboxList> */}
+            <Outlet></Outlet>
             {/* <MessageView></MessageView> */}
             {/* <TextEditing></TextEditing> */}
           </Col>

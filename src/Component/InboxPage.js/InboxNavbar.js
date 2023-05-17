@@ -7,7 +7,7 @@ import { Nav } from "react-bootstrap";
 const InboxNavbar = () => {
   return (
     <>
-      <Navbar bg="success" fluid>
+      <Navbar bg="success">
         <Container fluid>
           <img
             className="thum-img"

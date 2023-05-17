@@ -72,13 +72,6 @@ export const getmailHandler = () => {
 };
 
 export const UpdateList = (obj) => {
-  // const upadatedobj={
-  //   email: obj.email,
-  //   subject: obj.subject,
-
-  //   text: obj.text,
-  //   readreceipt: true,
-  // }
   return async (Dispatch) => {
     let emailId = localStorage.getItem("mailid").replace(/[&@.]/g, "");
 
@@ -106,8 +99,40 @@ export const UpdateList = (obj) => {
     };
     try {
       await UpdateEmailList();
+      Dispatch(MailSliceAction.updataItems());
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const DeleteMail = (id) => {
+  return async (Dispatch) => {
+    let emailId = localStorage.getItem("mailid").replace(/[&@.]/g, "");
+
+    const DeletingMail = async () => {
+      const response = await fetch(
+        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}/${id}.json`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.error) {
+        console.log(data);
+        // throw new Error("faild");
+      }
+      return data;
+    };
+    try {
+      const data = await DeletingMail();
+      Dispatch(MailSliceAction.DeleteItem());
+    } catch (error) {
+      console.log(error);
+      Dispatch(MailSliceAction.DeleteItem());
     }
   };
 };
