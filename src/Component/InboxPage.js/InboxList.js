@@ -7,7 +7,7 @@ import { UpdateList } from "../../Store/Mail-thunk";
 import { useSelector, useDispatch } from "react-redux";
 const InboxList = () => {
   const Items = useSelector((state) => state.mail.items);
-  console.log(Items);
+  // console.log(Items);
 
   return (
     <>

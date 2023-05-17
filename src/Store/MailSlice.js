@@ -34,8 +34,8 @@ const MailSlice = createSlice({
         return;
       });
       state.unread = Unreadmessage;
-      console.log(state.unread);
-      console.log(action.payload.transformeddata);
+      // console.log(state.unread);
+      // console.log(action.payload.transformeddata);
     },
     updataItems(state, action) {
       state.count = state.count + 1;
@@ -52,7 +52,11 @@ const MailSlice = createSlice({
     },
     addMessageViewinfo(state, action) {
       state.messageView = action.payload;
-      console.log(" addMessageViewinfo", action.payload);
+      // console.log(" addMessageViewinfo", action.payload);
+    },
+    RemovesentMail(state, action) {
+      // console.log(state.sentItem);
+      state.sentItem = action.payload;
     },
   },
 });

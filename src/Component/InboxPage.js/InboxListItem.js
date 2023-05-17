@@ -13,7 +13,7 @@ const InboxListItem = (props) => {
   const Dispatch = useDispatch();
   // console.log(props);
   //   console.log(Items);
-  console.log("deatails/", props);
+  // console.log("deatails/", props);
   let Readreceipt;
   if (!props.readreceipt) {
     Readreceipt = "readreceipt";
@@ -30,7 +30,7 @@ const InboxListItem = (props) => {
   };
   const deleteHandler = () => {
     Dispatch(DeleteMail(props.id));
-    console.log(props.id);
+    // console.log(props.id);
   };
   return (
     <>

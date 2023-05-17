@@ -20,7 +20,7 @@ const InboxPage = () => {
   const unread = useSelector((state) => state.mail.unread);
   const Disptach = useDispatch();
 
-  console.log("beforeupdate", Items);
+  // console.log("beforeupdate", Items);
 
   useEffect(() => {
     Disptach(getmailHandler());
@@ -36,6 +36,10 @@ const InboxPage = () => {
 
   //   Disptach(UpdateList(Items));
   // }, [count, Disptach]);
+
+  const sendmailcartHandler = () => {
+    Disptach(getmailHandler());
+  };
 
   return (
     <>
@@ -58,7 +62,7 @@ const InboxPage = () => {
                 </ListGroup.Item>
               </Link>
               <Link to="sentmessage">
-                <ListGroup.Item className="m-1" action>
+                <ListGroup.Item className="m-1" onClick={sendmailcartHandler}>
                   sendMail
                 </ListGroup.Item>
               </Link>
