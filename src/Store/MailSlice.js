@@ -6,6 +6,7 @@ const initialval = {
   items: [],
   count: 0,
   unread: 0,
+  messageView:{}
 };
 
 const MailSlice = createSlice({
@@ -46,6 +47,9 @@ const MailSlice = createSlice({
       state.count = state.count + 1;
       console.log("deleted");
     },
+    addMessageViewinfo(state,action){
+      state.messageView=action.payload
+    }
   },
 });
 export const MailSliceAction = MailSlice.actions;

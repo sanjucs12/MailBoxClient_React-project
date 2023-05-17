@@ -2,6 +2,7 @@ import AuthForm from "./Component/AuthForm/AuthForm";
 import TextEditing from "./Component/TextEditing/TextEditing";
 import InboxPage from "./Component/InboxPage.js/InboxPage";
 import { Route, Routes, Navigate } from "react-router-dom";
+import SentMessage from "./Component/InboxPage.js/Sentmessage/SentMessage";
 
 import MessageView from "./Component/InboxPage.js/MessageView";
 import InboxList from "./Component/InboxPage.js/InboxList";
@@ -15,6 +16,7 @@ function App() {
         <Route path="/main/*" element={<InboxPage />}>
           <Route path="inboxlist" element={<InboxList />} />
           <Route path="text-edit" element={<TextEditing />} />
+          <Route path="sentmessage" element={<SentMessage />} />
         </Route>
         {islogin && (
           <Route path="/login" element={<Navigate replace to="main" />} />

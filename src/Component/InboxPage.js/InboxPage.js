@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UpdateList } from "../../Store/Mail-thunk";
 import MessageView from "./MessageView";
 import { Link, Route, Routes } from "react-router-dom";
+import SentMessage from "./Sentmessage/SentMessage";
 
 const InboxPage = () => {
   const Items = useSelector((state) => state.mail.items);
@@ -55,9 +56,11 @@ const InboxPage = () => {
                   </div>
                 </ListGroup.Item>
               </Link>
-              <ListGroup.Item className="m-1" action>
-                <Link to="#">sendMail</Link>
-              </ListGroup.Item>
+              <Link to="sentmessage">
+                <ListGroup.Item className="m-1" action>
+                  sendMail
+                </ListGroup.Item>
+              </Link>
               <ListGroup.Item className="m-1" action>
                 DraftBox
               </ListGroup.Item>

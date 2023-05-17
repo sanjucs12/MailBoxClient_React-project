@@ -2,14 +2,14 @@ import React from "react";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
-import { UpdateList } from "../../Store/Mail-thunk";
+// import { UpdateList } from "../../Store/Mail-thunk";
 import Button from "react-bootstrap/Button";
 
-import { DeleteMail } from "../../Store/Mail-thunk";
+// import { DeleteMail } from "../../Store/Mail-thunk";
 import { Link } from "react-router-dom";
-import { MailSliceAction } from "../../Store/MailSlice";
+// import { MailSliceAction } from "../../Store/MailSlice";
 
-const InboxListItem = (props) => {
+const SentMessageListItem = (props) => {
   const Dispatch = useDispatch();
   // console.log(props);
   //   console.log(Items);
@@ -19,18 +19,20 @@ const InboxListItem = (props) => {
     Readreceipt = "readreceipt";
   }
   const ListItemHandler = () => {
-    if (props.readreceipt) {
-      Dispatch(MailSliceAction.addMessageViewinfo(props));
-      return;
-    }
-    Dispatch(UpdateList(props));
-    Dispatch(MailSliceAction.addMessageViewinfo(props));
+    console.log("sendmeeage page");
+    // if (props.readreceipt) {
+    //   Dispatch(MailSliceAction.addMessageViewinfo(props));
+    //   return;
+    // }
+    // Dispatch(UpdateList(props));
+    // Dispatch(MailSliceAction.addMessageViewinfo(props));
     // Dispatch(MailSliceAction.updataItems(props));
     // console.log(props);
   };
   const deleteHandler = () => {
-    Dispatch(DeleteMail(props.id));
-    console.log(props.id);
+    console.log("sendmeeage page");
+    // Dispatch(DeleteMail(props.id));
+    // console.log(props.id);
   };
   return (
     <>
@@ -60,4 +62,4 @@ const InboxListItem = (props) => {
     </>
   );
 };
-export default InboxListItem;
+export default SentMessageListItem;
