@@ -8,7 +8,7 @@ export const sendMailHandler = (mailobj) => {
 
     const sendingmail = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com/${emailId}/inbox.json`,
+        `https://mail-box-5eae5-default-rtdb.firebaseio.com/${emailId}/inbox.json`,
         {
           method: "POST",
           body: JSON.stringify(mailobj),
@@ -42,7 +42,7 @@ export const getmailHandler = () => {
   return async (Disptach) => {
     const gettingMailList = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}.json`,
+        `https://mail-box-5eae5-default-rtdb.firebaseio.com//${emailId}.json`,
         {
           method: "GET",
         }
@@ -91,7 +91,7 @@ export const UpdateList = (obj) => {
 
     const UpdateEmailList = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}/inbox/${obj.id}.json`,
+        `https://mail-box-5eae5-default-rtdb.firebaseio.com//${emailId}/inbox/${obj.id}.json`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -127,7 +127,7 @@ export const DeleteMail = (id) => {
 
     const DeletingMail = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}/inbox/${id}.json`,
+        `https://mail-box-5eae5-default-rtdb.firebaseio.com//${emailId}/inbox/${id}.json`,
         {
           method: "DELETE",
           headers: {
@@ -159,7 +159,7 @@ export const UpdateMySentItem = (sentItem) => {
 
     const UpdatedingmySendingItem = async () => {
       const response = await fetch(
-        `https://mailbox-client-26e9b-default-rtdb.firebaseio.com/${emailId}/sentItem/.json`,
+        `https://mail-box-5eae5-default-rtdb.firebaseio.com/${emailId}/sentItem/.json`,
         {
           method: "PUT",
           body: JSON.stringify(sentItem),

@@ -19,7 +19,7 @@ const DummyloginForm = () => {
       returnSecureToken: true,
     };
     logingRequest({
-      url: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM",
+      url: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDzqOjnqj2hMatX74dHiuLatBgFBBTPXDc",
       obj: userobj,
     });
   };

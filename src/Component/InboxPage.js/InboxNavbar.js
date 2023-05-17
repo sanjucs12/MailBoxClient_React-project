@@ -16,7 +16,7 @@ const InboxNavbar = () => {
     // navigate("/login");
   };
   return (
-    <>
+    <div className="navbars">
       <Navbar border="primary">
         <Container fluid>
           <div>
@@ -54,7 +54,7 @@ const InboxNavbar = () => {
           LogOut
         </Button>
       </Navbar>
-    </>
+    </div>
   );
 };
 export default InboxNavbar;

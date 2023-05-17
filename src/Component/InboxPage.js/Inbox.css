@@ -3,8 +3,8 @@
   border-radius: 20px;
 }
 
-.navbar {
-  border-color: bisque;
+.navbars {
+  border-color: rgb(255, 254, 253);
 }
 .readreceipt {
   display: flex;

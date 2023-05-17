@@ -1,9 +1,9 @@
 import { AuthsliceAction } from "./Auth";
 
 const loginURL =
-  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
+  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDzqOjnqj2hMatX74dHiuLatBgFBBTPXDc";
 const signupUrl =
-  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
+  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDzqOjnqj2hMatX74dHiuLatBgFBBTPXDc";
 // const RestUrl =
 //   "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
 export const sendsignup = (obj) => {
