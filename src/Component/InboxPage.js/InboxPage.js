@@ -31,6 +31,19 @@ const InboxPage = () => {
       Disptach(getmailHandler());
     }
   }, [count]);
+
+  useEffect(() => {
+    const intervelid = setInterval(() => {
+      console.log("setintervelid", intervelid);
+      Disptach(getmailHandler());
+    }, 2000);
+
+    return () => {
+      console.log("clearintervelid", intervelid);
+      clearInterval(intervelid);
+    };
+  });
+
   // useEffect(() => {
   //   console.log("UpdateList", Items);
 
