@@ -1,17 +1,11 @@
 import { AuthsliceAction } from "./Auth";
 
-const Navigate = () => {
-  // let ;
-  console.log("navi");
-
-  // ;
-};
 const loginURL =
   "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
 const signupUrl =
   "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
-const RestUrl =
-  "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
+// const RestUrl =
+//   "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBHfDdJCB5KGcrwcnmpsK7V5Q8haFmqDGM";
 export const sendsignup = (obj) => {
   return async (dispatch) => {
     const sendingAuth = async () => {

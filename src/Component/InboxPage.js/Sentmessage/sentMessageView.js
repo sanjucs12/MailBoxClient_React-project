@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const SentMessageView = (props) => {
-  //   let messageView = useSelector((state) => state.mail.messageView);
   const mymailmessageView = useSelector((state) => state.mymail.messageView);
   const navigate = useNavigate();
   console.log(mymailmessageView, " mymailmessageView");

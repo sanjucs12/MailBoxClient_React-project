@@ -12,7 +12,6 @@ const MymailSlice = createSlice({
   initialState: initialmystate,
   reducers: {
     AddSenditemList(state, action) {
-      const newItem = action.payload;
       state.sentItem = action.payload;
       // state.sentItem.push(newItem);
     },
@@ -20,9 +19,17 @@ const MymailSlice = createSlice({
       state.messageView = action.payload;
     },
     updateSendItem(state, action) {
-      state.sentItem = action.payload;
-      console.log(action.payload);
+      // state.sentItem = action.payload;
+      // console.log(action.payload.length === 0);
+      state.loadingspinner = !state.loadingspinner;
       state.sendcount++;
+      if (action.payload.length === 0) {
+        state.sentItem = [];
+        state.sendcount++;
+      } else {
+        state.sentItem = action.payload;
+        state.sendcount++;
+      }
     },
   },
 });

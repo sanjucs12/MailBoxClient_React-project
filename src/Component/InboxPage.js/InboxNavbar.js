@@ -1,8 +1,8 @@
 import React from "react";
 import "./Inbox.css";
-import { Container, Form, Button, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
+
 import { useNavigate } from "react-router-dom";
 import { AuthsliceAction } from "../../Store/Auth";
 import { useDispatch } from "react-redux";
@@ -12,17 +12,23 @@ const InboxNavbar = () => {
   const logoutHandler = () => {
     localStorage.clear();
     Dispatch(AuthsliceAction.Login());
-    navigate("/login");
+    // navigate("/login");
   };
   return (
     <>
-      <Navbar bg="success">
+      <Navbar border="primary">
         <Container fluid>
-          <img
-            className="thum-img"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1200px-Gmail_icon_%282020%29.svg.png"
-          ></img>
-
+          <div>
+            <img
+              className="thum-img"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1200px-Gmail_icon_%282020%29.svg.png"
+            ></img>
+            <img
+              className="thum-img2"
+              alt="mailname"
+              src="https://jagad.id/wp-content/uploads/2021/01/gmail-1.jpg.webp"
+            ></img>
+          </div>
           {/* <Nav>
             <Nav.Link>Home</Nav.Link>
           </Nav> */}

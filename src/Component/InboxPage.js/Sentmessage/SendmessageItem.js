@@ -1,17 +1,11 @@
 import React from "react";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { MailSliceAction } from "../../../Store/MailSlice";
-// import { UpdateList } from "../../Store/Mail-thunk";
 import Button from "react-bootstrap/Button";
-
-// import { DeleteMail } from "../../Store/Mail-thunk";
 import { Link } from "react-router-dom";
-
 import { MymailSliceAction } from "../../../Store/MymailSlice";
 
 const SentMessageListItem = (props) => {
-  // const sentItemlist = useSelector((state) => state.mail.sentItem);
   const sentItems = useSelector((state) => state.mymail.sentItem);
   const Dispatch = useDispatch();
 
@@ -24,20 +18,22 @@ const SentMessageListItem = (props) => {
     Dispatch(MymailSliceAction.addMessageViewinfo(props));
   };
   const deleteHandler = () => {
+    console.log("delete");
     let oldarry = sentItems;
-    let sentItem = oldarry.filter((item) => item.id !== props.id);
-
-    Dispatch(MymailSliceAction.updateSendItem(sentItem));
-
-    // console.log(props.id);
+    if (oldarry.length !== 1) {
+      let sentItem = oldarry.filter((item) => item.id !== props.id);
+      Dispatch(MymailSliceAction.updateSendItem(sentItem));
+    } else {
+      Dispatch(MymailSliceAction.updateSendItem([]));
+    }
   };
   return (
     <>
       <ListGroup.Item
         id={props.id}
         className="m-.3 "
-        variant="primary"
         key={props.id}
+        variant="success"
       >
         <Container>
           <Row>

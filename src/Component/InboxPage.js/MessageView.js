@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const MessageView = (props) => {
   let messageView = useSelector((state) => state.mail.messageView);
-  const mymailmessageView = useSelector((state) => state.mymail.messageView);
+
   const navigate = useNavigate();
   console.log(messageView, " mymailmessageView");
   const replybuttonHandler = () => {

@@ -38,16 +38,20 @@ export const sendMailHandler = (mailobj) => {
 //get all mail
 export const getmailHandler = () => {
   let emailId = localStorage.getItem("mailid").replace(/[&@.]/g, "");
-  console.log(emailId);
+  // console.log(emailId);
   return async (Disptach) => {
     const gettingMailList = async () => {
       const response = await fetch(
         `https://mailbox-client-26e9b-default-rtdb.firebaseio.com//${emailId}.json`,
         {
-          method: "Get",
+          method: "GET",
         }
       );
       const data = await response.json();
+      // if (data.inbox) {
+      //   return data;
+      // }
+      // console.log(data.inbox);
       if (data.error) {
         console.log(data);
         throw new Error("faild");
@@ -69,18 +73,13 @@ export const getmailHandler = () => {
         };
         transformeddata.push(Obj);
       }
-      // console.log(transformeddata);
-      sentItem = sentItem.map((item, index) => {
-        return {
-          id: index,
-          ...item,
-        };
-      });
-
-      Disptach(MailSliceAction.addItem({ transformeddata, sentItem }));
-      Disptach(MymailSliceAction.AddSenditemList(sentItem));
+      Disptach(MailSliceAction.addItem(transformeddata));
+      if (sentItem) {
+        Disptach(MymailSliceAction.AddSenditemList(sentItem));
+      }
     } catch (error) {
-      console.log("error message");
+      // console.log("error message");
+      // console.log(data);
     }
   };
 };
@@ -147,7 +146,7 @@ export const DeleteMail = (id) => {
       const data = await DeletingMail();
       Dispatch(MailSliceAction.DeleteItem());
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       Dispatch(MailSliceAction.DeleteItem());
     }
   };
@@ -176,10 +175,12 @@ export const UpdateMySentItem = (sentItem) => {
       return data;
     };
     try {
-      await UpdatedingmySendingItem();
+      const data = await UpdatedingmySendingItem();
+      console.log(data);
+
       // Dispatch( MymailSliceAction.sendItemUpdateTrigge());
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 };
